@@ -43,4 +43,5 @@ Route::get('/backend/products', function() {
 });
 
 Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backend.pages.dashboard');
+Route::get('/admin/products', 'Backend\ProductController@index')->name('backend.products.index');
 

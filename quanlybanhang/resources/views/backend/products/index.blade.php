@@ -1,8 +1,17 @@
-<h1>Danh sách Sản phẩm</h1>
+@extends('backend.layouts.master')
 
-<table border="1" cellspacing="0">
+@section('title')
+Danh sách Sản phẩm
+@endsection
+
+@section('feature-title')
+Danh sách Sản phẩm
+@endsection
+
+@section('content')
+<table class="table table-bordered table-striped table-responsive">
     <thead>
-        <tr style="background: #00ff00;">
+        <tr>
             <th>Mã sản phẩm</th>
             <th>Tên sản phẩm</th>
             <th>Nhà cung cấp</th>
@@ -20,3 +29,4 @@
         @endforeach
     </tbody>
 </table>
+@endsection
