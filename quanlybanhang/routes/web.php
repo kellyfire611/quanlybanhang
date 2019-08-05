@@ -41,3 +41,6 @@ Route::get('/backend/products', function() {
     return view('backend.products.index')
         ->with('listProducts', $list);
 });
+
+Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backend.pages.dashboard');
+
