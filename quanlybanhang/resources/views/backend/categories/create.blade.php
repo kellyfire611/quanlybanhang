@@ -10,6 +10,7 @@ Thêm mới Loại sản phẩm
 
 @section('content')
 <form name="frmCreateCategory" method="post" action="{{ route('backend.categories.store') }}">
+    {{ csrf_field() }}
   <div class="form-group">
     <label for="category_code">Mã Loại sản phẩm</label>
     <input type="text" class="form-control" id="category_code" name="category_code" aria-describedby="category_codeHelp" placeholder="Nhập mã loại sản phẩm">
@@ -17,7 +18,7 @@ Thêm mới Loại sản phẩm
   </div>
   <div class="form-group">
     <label for="category_name">Tên Loại sản phẩm</label>
-    <input type="text" class="form-control" id="category_name" name="category_code" aria-describedby="category_nameHelp" placeholder="Nhập Tên loại sản phẩm">
+    <input type="text" class="form-control" id="category_name" name="category_name" aria-describedby="category_nameHelp" placeholder="Nhập Tên loại sản phẩm">
     <small id="category_nameHelp" class="form-text text-muted">Nhập tên loại sản phẩm (24 ký tự).</small>
   </div>
   <div class="form-group">
