@@ -46,4 +46,5 @@ Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backen
 Route::get('/admin/products', 'Backend\ProductController@index')->name('backend.products.index');
 
 Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backend.categories.index');
-
+Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');
+Route::post('/admin/categories/store', 'Backend\CategoryController@store')->name('backend.categories.store');
