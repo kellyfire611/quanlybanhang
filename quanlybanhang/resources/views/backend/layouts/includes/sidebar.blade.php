@@ -28,6 +28,19 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Loại sản phẩm</span>
+        </a>
+        <div id="collapseCategories" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Chức năng Loại Sản phẩm:</h6>
+                <a class="collapse-item" href="{{ route('backend.categories.index') }}">Danh sách</a>
+                <a class="collapse-item" href="{{ route('backend.categories.create') }}">Thêm mới</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Sản phẩm</span>

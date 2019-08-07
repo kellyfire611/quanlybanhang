@@ -9,6 +9,7 @@ Danh sách Loại sản phẩm
 @endsection
 
 @section('content')
+<a href="{{ route('backend.categories.create') }}" class="btn btn-primary">Thêm mới</a>
 <table class="table table-bordered table-striped table-responsive">
     <thead>
         <tr>

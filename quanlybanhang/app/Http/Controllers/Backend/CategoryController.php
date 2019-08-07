@@ -44,6 +44,8 @@ class CategoryController extends Controller
         $category->description   = $request->description;
         $category->image         = $request->image;
         $category->save();
+
+        return redirect()->route('backend.categories.index');
     }
 
     /**

@@ -31,6 +31,7 @@ Thêm mới Loại sản phẩm
     <input type="file" class="form-control" id="image" name="image" aria-describedby="imageHelp">
     <small id="imageHelp" class="form-text text-muted">Chọn ảnh đại diện loại sản phẩm (tối đa là 5MB).</small>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="{{ route('backend.categories.index') }}" class="btn">Quay về</a>
+  <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
 @endsection
