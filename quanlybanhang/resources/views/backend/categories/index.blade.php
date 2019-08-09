@@ -25,7 +25,9 @@ Danh sách Loại sản phẩm
             <td>{{ $category->category_code }}</td>
             <td>{{ $category->category_name }}</td>
             <td>{{ $category->description }}</td>
-            <td>{{ $category->image }}</td>
+            <td>
+                <img src="{{ asset('storage/uploads/' . $category->image ) }}" width="80px" height="80px" />
+            </td>
         </tr>
         @endforeach
     </tbody>

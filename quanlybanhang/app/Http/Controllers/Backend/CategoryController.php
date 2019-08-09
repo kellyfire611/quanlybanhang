@@ -48,7 +48,7 @@ class CategoryController extends Controller
         {
             $file = $request->image;
 
-            // Lưu tên hình vào column sp_hinh
+            // Lưu tên hình vào column image
             $category->image = $file->getClientOriginalName();
             
             // Chép file vào thư mục "uploads"
