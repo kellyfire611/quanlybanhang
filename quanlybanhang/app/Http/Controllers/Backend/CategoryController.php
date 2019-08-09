@@ -43,6 +43,17 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->description   = $request->description;
         $category->image         = $request->image;
+
+        if($request->hasFile('image'))
+        {
+            $file = $request->image;
+
+            // Lưu tên hình vào column sp_hinh
+            $category->image = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "uploads"
+            $fileSaved = $file->storeAs('public/uploads', $category->image);
+        }
         $category->save();
 
         return redirect()->route('backend.categories.index');

@@ -9,7 +9,7 @@ Thêm mới Loại sản phẩm
 @endsection
 
 @section('content')
-<form name="frmCreateCategory" method="post" action="{{ route('backend.categories.store') }}">
+<form name="frmCreateCategory" method="post" action="{{ route('backend.categories.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
   <div class="form-group">
     <label for="category_code">Mã Loại sản phẩm</label>
