@@ -9,7 +9,7 @@ Hiệu chỉnh Loại sản phẩm
 @endsection
 
 @section('content')
-<form name="frmCreateCategory" method="post" action="{{ route('backend.categories.store') }}" enctype="multipart/form-data">
+<form name="frmCreateCategory" method="post" action="{{ route('backend.categories.update', ['id' => $category->id]) }}" enctype="multipart/form-data">
     {{ csrf_field() }}
   <div class="form-group">
     <label for="category_code">Mã Loại sản phẩm</label>
@@ -28,7 +28,7 @@ Hiệu chỉnh Loại sản phẩm
   </div>
   <div class="form-group">
     <label for="image">Ảnh đại diện Loại sản phẩm</label>
-    <img src="{{ asset('storage/uploads/' . $category->image ) }}" />
+    <img src="{{ asset('storage/uploads/' . $category->image ) }}" width="150px" height="150px" />
     <input type="file" class="form-control" id="image" name="image" aria-describedby="imageHelp">
     <small id="imageHelp" class="form-text text-muted">Chọn ảnh đại diện loại sản phẩm (tối đa là 5MB).</small>
   </div>

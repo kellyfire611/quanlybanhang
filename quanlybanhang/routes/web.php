@@ -49,3 +49,4 @@ Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backe
 Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');
 Route::post('/admin/categories/store', 'Backend\CategoryController@store')->name('backend.categories.store');
 Route::get('/admin/categories/{id}/edit', 'Backend\CategoryController@edit')->name('backend.categories.edit');
+Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
