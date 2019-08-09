@@ -78,7 +78,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id); //SELECT * FROM categories WHERE id = $id;
+        return view('backend.categories.edit')
+            ->with('category', $category);
     }
 
     /**

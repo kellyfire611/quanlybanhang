@@ -17,6 +17,7 @@ Danh sách Loại sản phẩm
             <th>Tên loại sản phẩm</th>
             <th>Diễn giải</th>
             <th>Hình ảnh</th>
+            <th>Chức năng</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,9 @@ Danh sách Loại sản phẩm
             <td>{{ $category->description }}</td>
             <td>
                 <img src="{{ asset('storage/uploads/' . $category->image ) }}" width="80px" height="80px" />
+            </td>
+            <td>
+                <a href="{{ route('backend.categories.edit', ['id' => $category->id]) }}">Sửa</a>
             </td>
         </tr>
         @endforeach
