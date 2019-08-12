@@ -9,6 +9,18 @@ Thêm mới Loại sản phẩm
 @endsection
 
 @section('content')
+<!-- DIV hiển thị thông báo lỗi start -->
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+<!-- DIV hiển thị thông báo lỗi end -->
+
 <form name="frmCreateCategory" id="frmCreateCategory" method="post" action="{{ route('backend.categories.store') }}" enctype="multipart/form-data">
   {{ csrf_field() }}
   <div class="form-group">
