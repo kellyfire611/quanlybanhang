@@ -96,6 +96,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('themes/sb-admin2/js/sb-admin-2.min.js') }}"></script>
+  <script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+
+  @yield('custom-scripts')
 
 </body>
 
