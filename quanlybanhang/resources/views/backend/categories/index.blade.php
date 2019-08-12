@@ -31,6 +31,11 @@ Danh sách Loại sản phẩm
             </td>
             <td>
                 <a href="{{ route('backend.categories.edit', ['id' => $category->id]) }}">Sửa</a>
+                <form name="frmDeleteCategory" method="post" action="{{ route('backend.categories.destroy', ['id' => $category->id]) }}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="submit" value="Xóa" />
+                </form>
             </td>
         </tr>
         @endforeach
