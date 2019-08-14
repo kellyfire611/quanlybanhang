@@ -25,12 +25,12 @@ Thêm mới Sản phẩm
   {{ csrf_field() }}
   <div class="form-group">
     <label for="product_code">Mã sản phẩm</label>
-    <input type="text" class="form-control" id="product_code" name="product_code" aria-describedby="product_codeHelp" placeholder="Nhập mã sản phẩm">
+    <input type="text" class="form-control" id="product_code" name="product_code" aria-describedby="product_codeHelp" placeholder="Nhập mã sản phẩm" value="{{ old('product_code') }}">
     <small id="product_codeHelp" class="form-text text-muted">Nhập mã sản phẩm (24 ký tự).</small>
   </div>
   <div class="form-group">
     <label for="product_name">Tên Loại sản phẩm</label>
-    <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="product_nameHelp" placeholder="Nhập Tên sản phẩm">
+    <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="product_nameHelp" placeholder="Nhập Tên sản phẩm" value="{{ old('product_name') }}">
     <small id="product_nameHelp" class="form-text text-muted">Nhập tên sản phẩm (24 ký tự).</small>
   </div>
   <div class="form-group">
@@ -67,7 +67,11 @@ Thêm mới Sản phẩm
     <label for="category_id">Loại sản phẩm</label>
     <select id="category_id" name="category_id" class="form-control">
       @foreach($lstCategories as $category)
-      <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+        @if(old('category_id') == $category->id)
+        <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
+        @else
+        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+        @endif
       @endforeach
     </select>
   </div>

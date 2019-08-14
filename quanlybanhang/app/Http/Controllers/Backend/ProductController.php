@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Supplier;
+use App\Http\Requests\ProductCreateRequest;
 
 class ProductController extends Controller
 {
@@ -26,7 +27,7 @@ class ProductController extends Controller
             ->with('lstSuppliers', $lstSuppliers);
     }
 
-    public function store(Request $request)
+    public function store(ProductCreateRequest $request)
     {
         $product = new Product();
         $product->product_code      = $request->product_code;
