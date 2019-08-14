@@ -47,6 +47,8 @@ Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backen
 Route::get('/admin/products', 'Backend\ProductController@index')->name('backend.products.index');
 Route::get('/admin/products/create', 'Backend\ProductController@create')->name('backend.products.create');
 Route::post('/admin/products/store', 'Backend\ProductController@store')->name('backend.products.store');
+Route::get('/admin/products/{id}/edit', 'Backend\ProductController@edit')->name('backend.products.edit');
+Route::post('/admin/products/{id}/update', 'Backend\ProductController@update')->name('backend.products.update');
 
 Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backend.categories.index');
 Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');
@@ -54,3 +56,4 @@ Route::post('/admin/categories/store', 'Backend\CategoryController@store')->name
 Route::get('/admin/categories/{id}/edit', 'Backend\CategoryController@edit')->name('backend.categories.edit');
 Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
 Route::delete('/admin/categories/{id}', 'Backend\CategoryController@destroy')->name('backend.categories.destroy');
+

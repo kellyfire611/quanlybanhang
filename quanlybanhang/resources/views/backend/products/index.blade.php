@@ -16,6 +16,7 @@ Danh sách Sản phẩm
             <th>Tên sản phẩm</th>
             <th>Nhà cung cấp</th>
             <th>Loại sản phẩm</th>
+            <th>Chức năng</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@ Danh sách Sản phẩm
             <td>{{ $product->product_name }}</td>
             <td width="10%;" style="text-align: center;">{{ $product->nhacungcap->category_name }}</td>
             <td width="10%;" style="text-align: center;">{{ $product->supplier->supplier_name }}</td>
+            <td>
+                <a href="{{ route('backend.products.edit', ['id' => $product->id]) }}">Sửa</a>
+                
+            </td>
         </tr>
         @endforeach
     </tbody>

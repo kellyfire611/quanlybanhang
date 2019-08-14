@@ -62,4 +62,16 @@ class ProductController extends Controller
 
         return redirect()->route('backend.products.index');
     }
+
+    public function edit($id)
+    {
+        $product = Product::find($id);
+        $lstCategories = Category::all();
+        $lstSuppliers = Supplier::all();
+
+        return view('backend.products.edit')
+            ->with('lstCategories', $lstCategories)
+            ->with('lstSuppliers', $lstSuppliers)
+            ->with('product', $product);
+    }
 }
