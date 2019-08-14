@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         $listCategories = DB::table('categories')->pluck('id'); //SELECT id FROM categories
         $listSuppliers = DB::table('suppliers')->pluck('id');   //SELECT id FROM suppliers
 
-        for ($i=1; $i <= 100; $i++) {
+        for ($i=1; $i <= 10; $i++) {
             array_push($list, 
                 [
                     'id'                => $i,
@@ -25,10 +25,10 @@ class ProductSeeder extends Seeder
                     'product_name'      => $faker->text(500),
                     'image'             => $faker->imageUrl(600, 600),
                     'description'       => $faker->text(250),
-                    'standard_code'     => $faker->randomFloat(50000, 50000, 100000000),
+                    'standard_cost'     => $faker->randomFloat(50000, 50000, 100000000),
                     'list_price'        => $faker->randomFloat(50000, 50000, 100000000),
                     'quantity_per_unit' => $faker->numberBetween(1, 100),
-                    'discountinued'     => $faker->numberBetween(0, 1),
+                    'discontinued'     => $faker->numberBetween(0, 1),
                     'discount'          => $faker->numberBetween(0, 100),
 
                     // Khóa ngoại

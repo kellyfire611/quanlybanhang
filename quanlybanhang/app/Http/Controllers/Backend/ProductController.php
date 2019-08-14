@@ -33,14 +33,14 @@ class ProductController extends Controller
         $product->product_name      = $request->product_name;
         $product->description       = $request->description;
         $product->image             = $request->image;
-        $product->standard_code     = $request->standard_code;
+        $product->standard_cost     = $request->standard_cost;
         $product->list_price        = $request->list_price;
         $product->quantity_per_unit = $request->quantity_per_unit;
-        //$product->discountinued      = $request->discountinued;
-        if($request->has('discountinued')) {
-            $product->discountinued = 1; // Ngưng bán
+        //$product->discontinued      = $request->discontinued;
+        if($request->has('discontinued')) {
+            $product->discontinued = 1; // Ngưng bán
         } else {
-            $product->discountinued = 0; // Còn sử dụng (bán)
+            $product->discontinued = 0; // Còn sử dụng (bán)
         }
 
         $product->discount          = $request->discount;

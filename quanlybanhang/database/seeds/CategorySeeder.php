@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
         $types = ["Hoa lẻ", "Phụ liệu", "Bó hoa", "Giỏ hoa", "Hoa hộp giấy", "Kệ hoa", "Vòng hoa", "Bình hoa", "Hoa hộp gỗ"];
         
         sort($types);
-        for ($i=1; $i <= 100; $i++) {
+        for ($i=1; $i <= 10; $i++) {
             array_push($list, 
                 [
                     'id'                => $i,

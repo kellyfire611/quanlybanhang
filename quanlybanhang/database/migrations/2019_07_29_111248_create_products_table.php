@@ -19,10 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('product_name', 500);
             $table->text('image');
             $table->string('description', 250);
-            $table->decimal('standard_code', 19, 4);
+            $table->decimal('standard_cost', 19, 4);
             $table->decimal('list_price', 19, 4);
             $table->float('quantity_per_unit', 8, 2);
-            $table->tinyInteger('discountinued');
+            $table->tinyInteger('discontinued');
             $table->float('discount', 8, 2);
             
             // Cột khóa ngoại

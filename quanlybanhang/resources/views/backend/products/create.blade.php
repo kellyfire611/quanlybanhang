@@ -44,8 +44,8 @@ Thêm mới Sản phẩm
     <small id="descriptionHelp" class="form-text text-muted">Diễn giải sản phẩm (24 ký tự).</small>
   </div>
   <div class="form-group">
-    <label for="standard_code">Giá nhập sản phẩm</label>
-    <input type="text" class="form-control" id="standard_code" name="standard_code" aria-describedby="standard_codeHelp" placeholder="Nhập Giá nhập sản phẩm">
+    <label for="standard_cost">Giá nhập sản phẩm</label>
+    <input type="text" class="form-control" id="standard_cost" name="standard_cost" aria-describedby="standard_costHelp" placeholder="Nhập Giá nhập sản phẩm">
   </div>
   <div class="form-group">
     <label for="list_price">Giá bán sản phẩm</label>
@@ -56,8 +56,8 @@ Thêm mới Sản phẩm
     <input type="text" class="form-control" id="quantity_per_unit" name="quantity_per_unit" aria-describedby="quantity_per_unitHelp" placeholder="Nhập Số lượng sản phẩm">
   </div>
   <div class="form-group">
-    <label for="discountinued">Ngưng bán?</label>
-    <input type="checkbox" class="form-control" id="discountinued" name="discountinued" aria-describedby="discountinuedHelp">
+    <label for="discontinued">Ngưng bán?</label>
+    <input type="checkbox" class="form-control" id="discontinued" name="discontinued" aria-describedby="discontinuedHelp">
   </div>
   <div class="form-group">
     <label for="discount">% giảm giá sản phẩm</label>
