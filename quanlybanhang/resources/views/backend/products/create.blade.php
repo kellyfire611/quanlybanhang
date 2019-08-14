@@ -57,7 +57,11 @@ Thêm mới Sản phẩm
   </div>
   <div class="form-group">
     <label for="discontinued">Ngưng bán?</label>
+    @if(old('discontinued'))
+    <input type="checkbox" class="form-control" id="discontinued" name="discontinued" aria-describedby="discontinuedHelp" checked>
+    @else
     <input type="checkbox" class="form-control" id="discontinued" name="discontinued" aria-describedby="discontinuedHelp">
+    @endif
   </div>
   <div class="form-group">
     <label for="discount">% giảm giá sản phẩm</label>
