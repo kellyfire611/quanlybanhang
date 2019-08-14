@@ -43,7 +43,10 @@ Route::get('/backend/products', function() {
 });
 
 Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backend.pages.dashboard');
+
 Route::get('/admin/products', 'Backend\ProductController@index')->name('backend.products.index');
+Route::get('/admin/products/create', 'Backend\ProductController@create')->name('backend.products.create');
+Route::post('/admin/products/store', 'Backend\ProductController@store')->name('backend.products.store');
 
 Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backend.categories.index');
 Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');
