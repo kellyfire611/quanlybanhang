@@ -25,4 +25,40 @@ class ProductController extends Controller
             ->with('lstCategories', $lstCategories)
             ->with('lstSuppliers', $lstSuppliers);
     }
+
+    public function store(Request $request)
+    {
+        $product = new Product();
+        $product->product_code      = $request->product_code;
+        $product->product_name      = $request->product_name;
+        $product->description       = $request->description;
+        $product->image             = $request->image;
+        $product->standard_code     = $request->standard_code;
+        $product->list_price        = $request->list_price;
+        $product->quantity_per_unit = $request->quantity_per_unit;
+        //$product->discountinued      = $request->discountinued;
+        if($request->has('discountinued')) {
+            $product->discountinued = 1; // Ngưng bán
+        } else {
+            $product->discountinued = 0; // Còn sử dụng (bán)
+        }
+
+        $product->discount          = $request->discount;
+        $product->category_id       = $request->category_id;
+        $product->supplier_id       = $request->supplier_id;
+
+        if($request->hasFile('image'))
+        {
+            $file = $request->image;
+
+            // Lưu tên hình vào column image
+            $product->image = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "uploads"
+            $fileSaved = $file->storeAs('public/uploads', $product->image);
+        }
+        $product->save();
+
+        return redirect()->route('backend.products.index');
+    }
 }

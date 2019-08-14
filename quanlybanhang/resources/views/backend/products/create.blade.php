@@ -56,8 +56,8 @@ Thêm mới Sản phẩm
     <input type="text" class="form-control" id="quantity_per_unit" name="quantity_per_unit" aria-describedby="quantity_per_unitHelp" placeholder="Nhập Số lượng sản phẩm">
   </div>
   <div class="form-group">
-    <label for="discontinued">Ngưng bán?</label>
-    <input type="checkbox" id="discontinued" name="discontinued" aria-describedby="discontinuedHelp">
+    <label for="discountinued">Ngưng bán?</label>
+    <input type="checkbox" class="form-control" id="discountinued" name="discountinued" aria-describedby="discountinuedHelp">
   </div>
   <div class="form-group">
     <label for="discount">% giảm giá sản phẩm</label>
@@ -79,7 +79,7 @@ Thêm mới Sản phẩm
       @endforeach
     </select>
   </div>
-  <a href="{{ route('backend.categories.index') }}" class="btn">Quay về</a>
+  <a href="{{ route('backend.products.index') }}" class="btn">Quay về</a>
   <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
 @endsection
