@@ -28,10 +28,15 @@ Danh sách Sản phẩm
             <td width="10%;" style="text-align: center;">{{ $product->supplier->supplier_name }}</td>
             <td>
                 <a href="{{ route('backend.products.edit', ['id' => $product->id]) }}">Sửa</a>
-                <form name="frmDeleteProduct" method="post" action="{{ route('backend.products.destroy', ['id' => $product->id]) }}">
+                <form id="frmDeleteProduct" name="frmDeleteProduct" method="post" action="{{ route('backend.products.destroy', ['id' => $product->id]) }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="DELETE" />
-                    <input type="submit" value="Xóa" />
+                    <button class="btn btn-danger btn-icon-split btn-delete">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        <span class="text">Xóa</span>
+                    </button>
                 </form>
             </td>
         </tr>
@@ -43,10 +48,34 @@ Danh sách Sản phẩm
 @section('custom-scripts')
 <script>
     $(document).ready(function() {
-        
-        // Gọi thử SweetAlert
-        Swal.fire('Hello world!');
 
+        // Gọi thử SweetAlert
+        //Swal.fire('Hello world!');
+        $('.btn-delete').click(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Bạn có chắc thực hiện thao tác không?',
+                text: "Khi xóa thành công không thể phục hồi được",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Thực hiện XÓA!'
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                        'Đã xóa thành công!',
+                        'Sản phẩm đã được xóa.',
+                        'success'
+                    )
+
+                    // Submit form
+                    $('#frmDeleteProduct').submit();
+                }
+            });
+
+
+        });
     });
 </script>
 @endsection
