@@ -93,9 +93,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request);
+        // dd($request);
         $category = Category::find($id);
-        $category->category_code = $request->category_code;
+        if(!empty($request->category_code)) {
+            $category->category_code = $request->category_code;
+        }
         $category->category_name = $request->category_name;
         $category->description   = $request->description;
         // dd($request->image);
@@ -106,6 +108,9 @@ class CategoryController extends Controller
 
         if($request->hasFile('image'))
         {
+            // Xóa hình cũ để tránh rác
+            Storage::delete('public/uploads/' . $category->image);
+
             $file = $request->image;
 
             // Lưu tên hình vào column image

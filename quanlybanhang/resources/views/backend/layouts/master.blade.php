@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('themes/sb-admin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('vendor/sweetalert/sweetalert2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -97,7 +98,8 @@
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('themes/sb-admin2/js/sb-admin-2.min.js') }}"></script>
   <script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
-
+  <script src="{{ asset('vendor/sweetalert/sweetalert2.all.min.js') }}"></script>
+  
   @yield('custom-scripts')
 
 </body>

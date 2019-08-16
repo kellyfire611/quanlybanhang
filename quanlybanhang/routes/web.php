@@ -49,6 +49,7 @@ Route::get('/admin/products/create', 'Backend\ProductController@create')->name('
 Route::post('/admin/products/store', 'Backend\ProductController@store')->name('backend.products.store');
 Route::get('/admin/products/{id}/edit', 'Backend\ProductController@edit')->name('backend.products.edit');
 Route::post('/admin/products/{id}/update', 'Backend\ProductController@update')->name('backend.products.update');
+Route::delete('/admin/products/{id}', 'Backend\ProductController@destroy')->name('backend.products.destroy');
 
 Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backend.categories.index');
 Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');

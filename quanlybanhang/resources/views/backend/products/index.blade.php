@@ -28,10 +28,25 @@ Danh sách Sản phẩm
             <td width="10%;" style="text-align: center;">{{ $product->supplier->supplier_name }}</td>
             <td>
                 <a href="{{ route('backend.products.edit', ['id' => $product->id]) }}">Sửa</a>
-                
+                <form name="frmDeleteProduct" method="post" action="{{ route('backend.products.destroy', ['id' => $product->id]) }}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="submit" value="Xóa" />
+                </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+@endsection
+
+@section('custom-scripts')
+<script>
+    $(document).ready(function() {
+        
+        // Gọi thử SweetAlert
+        Swal.fire('Hello world!');
+
+    });
+</script>
 @endsection
