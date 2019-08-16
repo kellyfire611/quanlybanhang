@@ -93,11 +93,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request);
         $category = Category::find($id);
         $category->category_code = $request->category_code;
         $category->category_name = $request->category_name;
         $category->description   = $request->description;
-        $category->image         = $request->image;
+        // dd($request->image);
+        if(!empty($request->image)) {
+            $category->image     = $request->image;
+        }
+        // dd($category->image);
 
         if($request->hasFile('image'))
         {

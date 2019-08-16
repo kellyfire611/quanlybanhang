@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use App\Supplier;
 use App\Http\Requests\ProductCreateRequest;
+use Storage;
 
 class ProductController extends Controller
 {
