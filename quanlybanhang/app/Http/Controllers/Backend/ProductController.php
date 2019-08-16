@@ -74,4 +74,30 @@ class ProductController extends Controller
             ->with('lstSuppliers', $lstSuppliers)
             ->with('product', $product);
     }
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $product->product_code = $request->product_code;
+        $product->product_name = $request->product_name;
+        $product->description   = $request->description;
+        $product->image         = $request->image;
+
+        if($request->hasFile('image'))
+        {
+            // Xóa hình cũ để tránh rác
+            Storage::delete('public/uploads/' . $product->image);
+
+            $file = $request->image;
+
+            // Lưu tên hình vào column image
+            $product->image = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "uploads"
+            $fileSaved = $file->storeAs('public/uploads', $product->image);
+        }
+        $product->save();
+
+        return redirect()->route('backend.products.index');
+    }
 }

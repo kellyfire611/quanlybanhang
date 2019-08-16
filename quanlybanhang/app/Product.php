@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public $timestamps = false;
+    public $timestamps = false; // không sử dụng cột UPDATED_AT, CREATED_AT
 
     protected $table        = 'products';
     
