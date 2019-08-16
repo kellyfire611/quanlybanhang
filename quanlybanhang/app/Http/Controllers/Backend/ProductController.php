@@ -78,10 +78,23 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $product->product_code = $request->product_code;
-        $product->product_name = $request->product_name;
-        $product->description   = $request->description;
-        $product->image         = $request->image;
+        $product->product_code      = $request->product_code;
+        $product->product_name      = $request->product_name;
+        $product->description       = $request->description;
+        $product->image             = $request->image;
+        $product->standard_cost     = $request->standard_cost;
+        $product->list_price        = $request->list_price;
+        $product->quantity_per_unit = $request->quantity_per_unit;
+        //$product->discontinued      = $request->discontinued;
+        if($request->has('discontinued')) {
+            $product->discontinued = 1; // Ngưng bán
+        } else {
+            $product->discontinued = 0; // Còn sử dụng (bán)
+        }
+
+        $product->discount          = $request->discount;
+        $product->category_id       = $request->category_id;
+        $product->supplier_id       = $request->supplier_id;
 
         if($request->hasFile('image'))
         {
