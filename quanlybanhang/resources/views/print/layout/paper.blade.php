@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
 
     <!-- Normalize or reset CSS with your favorite library -->
-    <link rel="stylesheet" href="{{ asset('vendor/normalize/normalize.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/normalize/normalize.css') }}">
 
     <!-- Load paper.css for happy printing -->
     <link rel="stylesheet" href="{{ asset('vendor/paper-css/paper.min.css') }}">

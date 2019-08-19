@@ -10,6 +10,7 @@ Danh sách Loại sản phẩm
 
 @section('content')
 <a href="{{ route('backend.categories.create') }}" class="btn btn-primary">Thêm mới</a>
+<a href="{{ route('backend.categories.print') }}" class="btn btn-success">In danh sách</a>
 <table class="table table-bordered table-striped table-responsive">
     <thead>
         <tr>
