@@ -70,7 +70,9 @@ Danh sách Sản phẩm
                     )
 
                     // Submit form
-                    $('#frmDeleteProduct').submit();
+                    // debugger;
+                    $(this).parent('#frmDeleteProduct').submit();
+                    // $('#frmDeleteProduct').submit();
                 }
             });
 
