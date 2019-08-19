@@ -137,4 +137,11 @@ class CategoryController extends Controller
 
         return redirect()->route('backend.categories.index');
     }
+
+    public function print()
+    {
+        $lstCategories = Category::all();
+        return view('backend.categories.print')
+            ->with('lstCategories', $lstCategories);
+    }
 }

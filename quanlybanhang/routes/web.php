@@ -57,4 +57,4 @@ Route::post('/admin/categories/store', 'Backend\CategoryController@store')->name
 Route::get('/admin/categories/{id}/edit', 'Backend\CategoryController@edit')->name('backend.categories.edit');
 Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
 Route::delete('/admin/categories/{id}', 'Backend\CategoryController@destroy')->name('backend.categories.destroy');
-
+Route::get('/admin/categories/print', 'Backend\CategoryController@print')->name('backend.categories.print');
