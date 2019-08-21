@@ -13,8 +13,11 @@ class ApiController extends Controller
         $data = DB::select('
             SELECT COUNT(*) as SoLuong FROM products;
         ');
+        // return redirect(); -> trả về HTML
+        // return view();     -> trả về HTML
+
         return response()->json(array(
-            'code'  => 200,
+            'code'  => 200, // HTTP status code 200, 201, 301, 302, 303, 404, 500...
             'data' => $data,
         ));
     }
