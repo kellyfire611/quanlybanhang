@@ -58,3 +58,6 @@ Route::get('/admin/categories/{id}/edit', 'Backend\CategoryController@edit')->na
 Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
 Route::delete('/admin/categories/{id}', 'Backend\CategoryController@destroy')->name('backend.categories.destroy');
 Route::get('/admin/categories/print', 'Backend\CategoryController@print')->name('backend.categories.print');
+
+// AJAX
+Route::get('/admin/api/getProductCount', 'Backend\Api\ApiController@getProductCount')->name('backend.api.getProductCount');
