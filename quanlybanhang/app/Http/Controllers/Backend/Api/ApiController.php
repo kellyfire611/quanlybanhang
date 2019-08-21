@@ -21,4 +21,20 @@ class ApiController extends Controller
             'data' => $data,
         ));
     }
+
+    public function getStatiticsCategoryProductCount() {
+        // raw sql
+        $data = DB::select('
+            SELECT c.category_name, COUNT(*) AS SoLuong
+            FROM products p
+            JOIN categories c ON p.category_id = c.id
+            GROUP BY c.category_name
+            ORDER BY COUNT(*) DESC;
+        ');
+
+        return response()->json(array(
+            'code'  => 200, // HTTP status code 200, 201, 301, 302, 303, 404, 500...
+            'data' => $data,
+        ));
+    }
 }

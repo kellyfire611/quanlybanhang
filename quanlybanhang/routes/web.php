@@ -61,3 +61,4 @@ Route::get('/admin/categories/print', 'Backend\CategoryController@print')->name(
 
 // AJAX
 Route::get('/admin/api/getProductCount', 'Backend\Api\ApiController@getProductCount')->name('backend.api.getProductCount');
+Route::get('/admin/api/getStatiticsCategoryProductCount', 'Backend\Api\ApiController@getStatiticsCategoryProductCount')->name('backend.api.getStatiticsCategoryProductCount');
