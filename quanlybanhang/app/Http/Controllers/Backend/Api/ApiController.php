@@ -25,7 +25,7 @@ class ApiController extends Controller
     public function getStatiticsCategoryProductCount() {
         // raw sql
         $data = DB::select('
-            SELECT c.category_name, COUNT(*) AS SoLuong
+            SELECT c.category_name AS TenLoaiSanPham, COUNT(*) AS SoLuong
             FROM products p
             JOIN categories c ON p.category_id = c.id
             GROUP BY c.category_name
