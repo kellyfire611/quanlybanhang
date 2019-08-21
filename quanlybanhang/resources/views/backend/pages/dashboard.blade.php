@@ -38,18 +38,25 @@ Màn hình Quản trị - Báo cáo nhanh tình hình Hệ thống
 
 @section('custom-scripts')
 <script>
-$(document).ready(function() {
-    $('#btnRefreshProductCount').click(function(e) {
-        // Nhờ AJAX gởi request đến url /admin/api/getProductCount
-        $.ajax('{{ route('backend.api.getProductCount') }}', {
-            success: function (data) {
-                $('#productCountText').html(data.data[0].SoLuong + ' sản phẩm');
-            },
-            error: function () {
-                $('#productCountText').html('Không xử lý được!');
-            }
-        }); 
+    $(document).ready(function() {
+        function getDataProductCount() {
+            // Nhờ AJAX gởi request đến url /admin/api/getProductCount
+            $.ajax('{{ route('backend.api.getProductCount') }}', {
+                success: function(data) {
+                    $('#productCountText').html(data.data[0].SoLuong + ' sản phẩm');
+                },
+                error: function() {
+                    $('#productCountText').html('Không xử lý được!');
+                }
+            });
+        };
+
+        $('#btnRefreshProductCount').click(function(e) {
+            getDataProductCount();
+        });
+
+        // Onload
+        getDataProductCount();
     });
-});
 </script>
 @endsection
