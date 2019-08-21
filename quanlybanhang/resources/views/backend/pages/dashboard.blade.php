@@ -37,6 +37,33 @@ Màn hình Quản trị - Báo cáo nhanh tình hình Hệ thống
 @endsection
 
 @section('custom-scripts')
+<!-- Các script dành cho thư viện Numeraljs -->
+<script src="{{ asset('vendor/numeraljs/numeral.min.js') }}"></script>
+<script>
+    // Đăng ký tiền tệ VNĐ
+    numeral.register('locale', 'vi', {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'tr',
+            billion: 'ty',
+            trillion: 'tyty'
+        },
+        ordinal: function(number) {
+            return number === 1 ? 'một' : 'không';
+        },
+        currency: {
+            symbol: 'vnđ'
+        }
+    });
+    // Sử dụng locate vi (Việt nam)
+    numeral.locale('vi');
+</script>
+
+
 <script>
     $(document).ready(function() {
         function getDataProductCount() {
