@@ -42,23 +42,29 @@ Route::get('/backend/products', function() {
         ->with('listProducts', $list);
 });
 
-Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backend.pages.dashboard');
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('/admin/dashboard', 'Backend\PageController@dashboard')->name('backend.pages.dashboard');
 
-Route::get('/admin/products', 'Backend\ProductController@index')->name('backend.products.index');
-Route::get('/admin/products/create', 'Backend\ProductController@create')->name('backend.products.create');
-Route::post('/admin/products/store', 'Backend\ProductController@store')->name('backend.products.store');
-Route::get('/admin/products/{id}/edit', 'Backend\ProductController@edit')->name('backend.products.edit');
-Route::post('/admin/products/{id}/update', 'Backend\ProductController@update')->name('backend.products.update');
-Route::delete('/admin/products/{id}', 'Backend\ProductController@destroy')->name('backend.products.destroy');
+    Route::get('/admin/products', 'Backend\ProductController@index')->name('backend.products.index');
+    Route::get('/admin/products/create', 'Backend\ProductController@create')->name('backend.products.create');
+    Route::post('/admin/products/store', 'Backend\ProductController@store')->name('backend.products.store');
+    Route::get('/admin/products/{id}/edit', 'Backend\ProductController@edit')->name('backend.products.edit');
+    Route::post('/admin/products/{id}/update', 'Backend\ProductController@update')->name('backend.products.update');
+    Route::delete('/admin/products/{id}', 'Backend\ProductController@destroy')->name('backend.products.destroy');
 
-Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backend.categories.index');
-Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');
-Route::post('/admin/categories/store', 'Backend\CategoryController@store')->name('backend.categories.store');
-Route::get('/admin/categories/{id}/edit', 'Backend\CategoryController@edit')->name('backend.categories.edit');
-Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
-Route::delete('/admin/categories/{id}', 'Backend\CategoryController@destroy')->name('backend.categories.destroy');
-Route::get('/admin/categories/print', 'Backend\CategoryController@print')->name('backend.categories.print');
+    Route::get('/admin/categories', 'Backend\CategoryController@index')->name('backend.categories.index');
+    Route::get('/admin/categories/create', 'Backend\CategoryController@create')->name('backend.categories.create');
+    Route::post('/admin/categories/store', 'Backend\CategoryController@store')->name('backend.categories.store');
+    Route::get('/admin/categories/{id}/edit', 'Backend\CategoryController@edit')->name('backend.categories.edit');
+    Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
+    Route::delete('/admin/categories/{id}', 'Backend\CategoryController@destroy')->name('backend.categories.destroy');
+    Route::get('/admin/categories/print', 'Backend\CategoryController@print')->name('backend.categories.print');
+    
+    // AJAX
+    Route::get('/admin/api/getProductCount', 'Backend\Api\ApiController@getProductCount')->name('backend.api.getProductCount');
+    Route::get('/admin/api/getStatiticsCategoryProductCount', 'Backend\Api\ApiController@getStatiticsCategoryProductCount')->name('backend.api.getStatiticsCategoryProductCount');
+});
 
-// AJAX
-Route::get('/admin/api/getProductCount', 'Backend\Api\ApiController@getProductCount')->name('backend.api.getProductCount');
-Route::get('/admin/api/getStatiticsCategoryProductCount', 'Backend\Api\ApiController@getStatiticsCategoryProductCount')->name('backend.api.getStatiticsCategoryProductCount');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
