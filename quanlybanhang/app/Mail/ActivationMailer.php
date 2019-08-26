@@ -33,6 +33,13 @@ class ActivationMailer extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.activate-account');
+        //return $this->view('emails.activate-account');
+        
+        $email = $this->data['email'];
+        return $this->from(env('MAIL_FROM_ADDRESS', 'hotro.nentangtoituonglai@gmail.com'), env('MAIL_FROM_NAME', 'Sunshine'))
+            ->replyTo($email)
+            ->subject("Có thành viên $email vừa đăng ký")
+            ->view('emails.activate-account')
+            ->with('data', $this->data);
     }
 }

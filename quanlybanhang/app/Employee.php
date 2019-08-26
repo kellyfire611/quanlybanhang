@@ -12,7 +12,7 @@ class Employee extends Model implements
 
     protected $table        = 'employees';
     
-    protected $fillable     = ['username', 'last_name', 'first_name', 'email', 'avatar', 'password', 'job_title', 'manager_id', 'phone', 'address1', 'address2', 'city', 'state', 'postal_code', 'country', 'remember_token'];
+    protected $fillable     = ['username', 'last_name', 'first_name', 'email', 'avatar', 'password', 'job_title', 'manager_id', 'phone', 'address1', 'address2', 'city', 'state', 'postal_code', 'country', 'remember_token', 'active_code'];
     protected $guarded      = ['id'];
     protected $primaryKey   = 'id';
 

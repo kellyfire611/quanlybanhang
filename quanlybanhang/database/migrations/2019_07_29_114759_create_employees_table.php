@@ -31,6 +31,7 @@ class CreateEmployeesTable extends Migration
             $table->string('postal_code', 15);
             $table->string('country', 255);
             $table->string('remember_token', 255);
+            $table->string('active_code', 255);
         });
     }
 
