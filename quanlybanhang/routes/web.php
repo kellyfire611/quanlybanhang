@@ -60,6 +60,15 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/admin/categories/{id}/update', 'Backend\CategoryController@update')->name('backend.categories.update');
     Route::delete('/admin/categories/{id}', 'Backend\CategoryController@destroy')->name('backend.categories.destroy');
     Route::get('/admin/categories/print', 'Backend\CategoryController@print')->name('backend.categories.print');
+
+    // Đơn hàng
+    Route::get('/admin/orders', 'Backend\OrderController@index')->name('backend.orders.index');
+    Route::get('/admin/orders/create', 'Backend\OrderController@create')->name('backend.orders.create');
+    Route::post('/admin/orders/store', 'Backend\OrderController@store')->name('backend.orders.store');
+    Route::get('/admin/orders/{id}/edit', 'Backend\OrderController@edit')->name('backend.orders.edit');
+    Route::post('/admin/orders/{id}/update', 'Backend\OrderController@update')->name('backend.orders.update');
+    Route::delete('/admin/orders/{id}', 'Backend\OrderController@destroy')->name('backend.orders.destroy');
+    Route::get('/admin/orders/print', 'Backend\OrderController@print')->name('backend.orders.print');
     
     // AJAX
     Route::get('/admin/api/getProductCount', 'Backend\Api\ApiController@getProductCount')->name('backend.api.getProductCount');
