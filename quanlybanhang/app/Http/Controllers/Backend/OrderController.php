@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -14,7 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $lstOrders = Order::all();
+        return view('backend.orders.index')
+            ->with('lstOrders', $lstOrders);
     }
 
     /**
@@ -24,7 +28,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('backend.orders.create');
+        $lstProducts = Product::all();
+        return view('backend.orders.create')
+            ->with('lstProducts', $lstProducts);
     }
 
     /**

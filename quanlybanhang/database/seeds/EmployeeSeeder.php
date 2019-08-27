@@ -12,7 +12,7 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        $faker    = Faker\Factory::create('vi_VN'); //locate ISO
+        $faker    = Faker\Factory::create('en_US'); //locate ISO
         $list = [];
         
         // Người dùng mặc định

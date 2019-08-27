@@ -11,7 +11,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $faker    = Faker\Factory::create('vi_VN'); //locate ISO
+        $faker    = Faker\Factory::create('en_US'); //locate ISO
         $list = [];
 
         $listCategories = DB::table('categories')->pluck('id'); //SELECT id FROM categories
@@ -25,10 +25,10 @@ class ProductSeeder extends Seeder
                     'product_name'      => $faker->text(500),
                     'image'             => $faker->imageUrl(600, 600),
                     'description'       => $faker->text(250),
-                    'standard_cost'     => $faker->randomFloat(50000, 50000, 100000000),
-                    'list_price'        => $faker->randomFloat(50000, 50000, 100000000),
+                    'standard_cost'     => $faker->randomFloat(50000, 50000, 10000000),
+                    'list_price'        => $faker->randomFloat(50000, 50000, 10000000),
                     'quantity_per_unit' => $faker->numberBetween(1, 100),
-                    'discontinued'     => $faker->numberBetween(0, 1),
+                    'discontinued'      => $faker->numberBetween(0, 1),
                     'discount'          => $faker->numberBetween(0, 100),
 
                     // Khóa ngoại

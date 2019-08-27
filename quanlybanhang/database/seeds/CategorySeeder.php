@@ -11,7 +11,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $faker    = Faker\Factory::create('vi_VN'); //locate ISO
+        $faker    = Faker\Factory::create('en_US'); //locate ISO vi_VN
         $list = [];
         $types = ["Hoa lẻ", "Phụ liệu", "Bó hoa", "Giỏ hoa", "Hoa hộp giấy", "Kệ hoa", "Vòng hoa", "Bình hoa", "Hoa hộp gỗ"];
         

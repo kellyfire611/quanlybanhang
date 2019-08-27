@@ -53,17 +53,23 @@ Thêm mới Đơn hàng
       <table class="table table-bordered text-white">
         <thead>
           <tr>
-            <th>Sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Giá</th>
-            <th>% Giảm giá</th>
-            <th>###</th>
+            <th style="width: 40%;">Sản phẩm</th>
+            <th style="width: 20%;">Số lượng</th>
+            <th style="width: 20%;">Giá</th>
+            <th style="width: 10%;">% Giảm giá</th>
+            <th style="width: 10%;">###</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <input type="text" class="form-control" name="product_id" />
+              <select class="form-control" name="product_id">
+                @foreach($lstProducts as $product)
+                <option value="{{ $product->id }}">
+                  <div style="word-wrap: break-word;">{{ $product->product_name }}</div>
+                </option>
+                @endforeach
+              </select>
             </td>
             <td>
               <input type="text" class="form-control" name="quantity" />
