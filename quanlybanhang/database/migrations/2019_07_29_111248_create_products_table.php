@@ -17,13 +17,13 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('product_code', 25);
             $table->string('product_name', 500);
-            $table->text('image');
-            $table->string('description', 250);
+            $table->text('image')->nullable();
+            $table->string('description', 250)->nullable();
             $table->decimal('standard_cost', 19, 4);
             $table->decimal('list_price', 19, 4);
             $table->float('quantity_per_unit', 8, 2);
-            $table->tinyInteger('discontinued');
-            $table->float('discount', 8, 2);
+            $table->tinyInteger('discontinued')->nullable();
+            $table->float('discount', 8, 2)->nullable();
             
             // Cột khóa ngoại
             $table->integer('category_id')->unsigned();

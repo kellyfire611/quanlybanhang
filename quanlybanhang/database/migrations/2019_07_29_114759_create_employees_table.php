@@ -19,19 +19,20 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name', 255);
             $table->string('first_name', 255);
             $table->string('email', 191);
-            $table->string('avatar', 500);
+            $table->string('avatar', 500)->nullable();
             $table->string('password', 500);
-            $table->string('job_title', 255);
-            $table->integer('manager_id');
-            $table->string('phone', 25);
-            $table->string('address1', 500);
-            $table->string('address2', 500);
-            $table->string('city', 255);
-            $table->string('state', 255);
-            $table->string('postal_code', 15);
-            $table->string('country', 255);
-            $table->string('remember_token', 255);
-            $table->string('active_code', 255);
+            $table->string('job_title', 255)->nullable();
+            $table->integer('manager_id')->nullable();
+            $table->string('phone', 25)->nullable();
+            $table->string('address1', 500)->nullable();
+            $table->string('address2', 500)->nullable();
+            $table->string('city', 255)->nullable();
+            $table->string('state', 255)->nullable();
+            $table->string('postal_code', 15)->nullable();
+            $table->string('country', 255)->nullable();
+            $table->string('remember_token', 255)->nullable();
+            $table->string('active_code', 255)->nullable();
+            $table->tinyInteger('status');
         });
     }
 

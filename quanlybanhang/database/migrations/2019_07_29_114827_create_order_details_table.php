@@ -22,7 +22,7 @@ class CreateOrderDetailsTable extends Migration
             $table->decimal('unit_price', 19, 4);
             $table->double('discount');
             $table->string('order_detail_status', 50);
-            $table->dateTime('date_allocated');
+            $table->dateTime('date_allocated')->nullable();
 
             // Tạo liên kết Khóa ngoại
             $table->foreign('order_id')

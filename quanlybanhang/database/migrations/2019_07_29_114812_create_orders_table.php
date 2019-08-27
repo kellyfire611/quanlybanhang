@@ -21,15 +21,15 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id')->unsigned();
 
             $table->dateTime('order_date');
-            $table->dateTime('shipped_date');
+            $table->dateTime('shipped_date')->nullable();;
             $table->string('ship_name', 50);
             $table->string('ship_address1', 500);
-            $table->string('ship_address2', 500);
+            $table->string('ship_address2', 500)->nullable();;
             $table->string('ship_city', 255);
-            $table->string('ship_state', 255);
-            $table->string('ship_postal_code', 50);
+            $table->string('ship_state', 255)->nullable();;
+            $table->string('ship_postal_code', 50)->nullable();;
             $table->string('ship_country', 255);
-            $table->decimal('shipping_pee', 19, 4);
+            $table->decimal('shipping_pee', 19, 4)->nullable();;
             $table->string('payment_type', 255);
             $table->dateTime('paid_date');
             $table->string('order_status', 50);
