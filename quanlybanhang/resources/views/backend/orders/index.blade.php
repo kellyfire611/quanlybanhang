@@ -33,11 +33,11 @@ Danh sách Đơn hàng
                 Điện thoại: {{ $order->phone }}<br /> 
                 Địa chỉ: {{ $order->address1 }}<br /> 
             </td>
-            <td>{{ $order->order_date }}</td>
-            <td>{{ $order->shipped_date }}</td>
+            <td>{{ date_format(DateTime::createFromFormat('Y-m-d H:i:s', $order->order_date), 'd/m/Y H:i:s') }}</td>
+            <td>{{ date_format(DateTime::createFromFormat('Y-m-d H:i:s', $order->shipped_date), 'd/m/Y H:i:s') }}</td>
             <td>
-                Tổng số mặt hàng: {{ $order->TongSoMatHang }}<br />
-                Tổng thành tiền: {{ $order->TongThanhTien }}
+                Tổng số mặt hàng: {{ number_format($order->TongSoMatHang, 0, ".", ",") }}<br />
+                Tổng thành tiền: {{ number_format($order->TongThanhTien, 0, ".", ",") }}
             </td>
             <td>
                 @if($order->order_status == 1)
