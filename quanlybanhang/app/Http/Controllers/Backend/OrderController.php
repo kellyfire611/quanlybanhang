@@ -62,7 +62,7 @@ EOT;
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

@@ -101,7 +101,7 @@ Thêm mới Đơn hàng
   <div class="card border-success text-white bg-gradient-primary mb-3">
     <div class="card-header bg-gradient-primary">
       <h5 class="card-title">Chọn sản phẩm trong đơn hàng</h5>
-      <h6 class="card-subtitle mb-2">Card subtitle</h6>
+      <h6 class="card-subtitle mb-2">Chọn sản phẩm</h6>
     </div>
     <div class="card-body">
       <table class="table table-bordered text-white">
@@ -117,25 +117,23 @@ Thêm mới Đơn hàng
         <tbody>
           <tr>
             <td>
-              <select class="form-control" name="product_id">
+              <select class="form-control" name="product_id" id="product_id">
                 @foreach($lstProducts as $product)
-                <option value="{{ $product->id }}">
-                  <div style="word-wrap: break-word;">{{ $product->product_name }}</div>
-                </option>
+                <option value="{{ $product->id }}">{{ $product->product_name }}</option>
                 @endforeach
               </select>
             </td>
             <td>
-              <input type="text" class="form-control" name="quantity" />
+              <input type="text" class="form-control" name="quantity" id="quantity" />
             </td>
             <td>
-              <input type="text" class="form-control" name="unit_price" />
+              <input type="text" class="form-control" name="unit_price" id="unit_price" />
             </td>
             <td>
-              <input type="text" class="form-control" name="discount" />
+              <input type="text" class="form-control" name="discount" id="discount" />
             </td>
             <td>
-              <button type="button" class="btn btn-primary">Thêm</button>
+              <button type="button" class="btn btn-primary" id="btnThemSanPham">Thêm</button>
             </td>
           </tr>
         </tbody>
@@ -154,9 +152,11 @@ Thêm mới Đơn hàng
         <th>###</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tblSanPham">
       <tr>
-        <td>Sản phẩm</td>
+        <td>Sản phẩm
+          
+        </td>
         <td>Số lượng</td>
         <td>Giá</td>
         <td>% Giảm giá</td>
@@ -245,6 +245,24 @@ Thêm mới Đơn hàng
       unhighlight: function(element, errorClass, validClass) {
         $(element).addClass("is-valid").removeClass("is-invalid");
       }
+    });
+
+    $('#btnThemSanPham').click(function() {
+      // debugger;
+      var product_id = $('#product_id').val();
+      var product_displayText = $('#product_id option:selected').text();
+      var quantity = $('#quantity').val();
+      var unit_price = $('#unit_price').val();
+      var discount = $('#discount').val();
+      var thanhtien = (quantity * unit_price) * (1 - discount);
+
+      var htmlTemplate = '<tr><td>'+product_displayText+'<input name="product_id[]" value="'+product_id+'" style="display: none;" /></td><td>'+quantity+'<input name="quantity[]" value="'+quantity+'" style="display: none;" /></td><td>'+unit_price+'<input name="unit_price[]" value="'+unit_price+'" style="display: none;" /></td><td>'+discount+'<input name="discount[]" value="'+discount+'" style="display: none;" /></td><td>'+thanhtien+'</td><td><button type="button" class="btn btn-danger">Xóa</button></td></tr>';
+      $('#tblSanPham').append(htmlTemplate);
+
+      // Clear
+      $('#quantity').val('');
+      $('#unit_price').val('');
+      $('#discount').val('');
     });
   });
 </script>
