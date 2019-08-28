@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
                 [
                     'id'                => $i,
                     'product_code'      => $faker->numerify('product_######'),
-                    'product_name'      => $faker->text(500),
+                    'product_name'      => $faker->text(20),
                     'image'             => $faker->imageUrl(600, 600),
                     'description'       => $faker->text(250),
                     'standard_cost'     => $faker->randomFloat(50000, 50000, 10000000),

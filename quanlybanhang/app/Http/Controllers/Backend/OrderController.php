@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Customer;
+use App\Employee;
 use App\Order;
 use DB;
 
@@ -42,9 +44,14 @@ EOT;
      */
     public function create()
     {
-        
-        // return view('backend.orders.create')
-        //     ->with('lstProducts', $lstProducts);
+        $lstCustomers = Customer::all();
+        $lstEmployees = Employee::all();
+
+        $lstProducts = Product::all();
+        return view('backend.orders.create')
+            ->with('lstCustomers', $lstCustomers)
+            ->with('lstEmployees', $lstEmployees)
+            ->with('lstProducts', $lstProducts);
     }
 
     /**

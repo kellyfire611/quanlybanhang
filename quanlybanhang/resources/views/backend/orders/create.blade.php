@@ -21,27 +21,81 @@ Thêm mới Đơn hàng
 @endif
 <!-- DIV hiển thị thông báo lỗi end -->
 
-<form name="frmCreateOrder" id="frmCreateOrder" method="post" action="{{ route('backend.categories.store') }}" enctype="multipart/form-data">
+<form name="frmCreateOrder" id="frmCreateOrder" method="post" action="{{ route('backend.orders.store') }}" enctype="multipart/form-data">
   {{ csrf_field() }}
-  <div class="form-group">
-    <label for="order_code">Mã Loại sản phẩm</label>
-    <input type="text" class="form-control" id="order_code" name="order_code" aria-describedby="order_codeHelp" placeholder="Nhập mã loại sản phẩm">
-    <small id="order_codeHelp" class="form-text text-muted">Nhập mã loại sản phẩm (24 ký tự).</small>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="customer_id">Khách hàng</label>
+        <select id="customer_id" name="customer_id" class="form-control">
+          @foreach($lstCustomers as $customer)
+          @if(old('customer_id') == $customer->id)
+          <option value="{{ $customer->id }}" selected>{{ $customer->last_name }} {{ $customer->first_name }}</option>
+          @else
+          <option value="{{ $customer->id }}">{{ $customer->last_name }} {{ $customer->first_name }}</option>
+          @endif
+          @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="employee_id">Nhân viên</label>
+        <select id="employee_id" name="employee_id" class="form-control">
+          @foreach($lstEmployees as $employee)
+          @if(old('employee_id') == $employee->id)
+          <option value="{{ $employee->id }}" selected>{{ $employee->last_name }} {{ $employee->first_name }}</option>
+          @else
+          <option value="{{ $employee->id }}">{{ $employee->last_name }} {{ $employee->first_name }}</option>
+          @endif
+          @endforeach
+        </select>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="order_name">Tên Loại sản phẩm</label>
-    <input type="text" class="form-control" id="order_name" name="order_name" aria-describedby="order_nameHelp" placeholder="Nhập Tên loại sản phẩm">
-    <small id="order_nameHelp" class="form-text text-muted">Nhập tên loại sản phẩm (24 ký tự).</small>
-  </div>
-  <div class="form-group">
-    <label for="description">Diễn giải Loại sản phẩm</label>
-    <input type="text" class="form-control" id="description" name="description" aria-describedby="descriptionHelp" placeholder="Nhập mã loại sản phẩm">
-    <small id="descriptionHelp" class="form-text text-muted">Diễn giải loại sản phẩm (24 ký tự).</small>
-  </div>
-  <div class="form-group">
-    <label for="image">Ảnh đại diện Loại sản phẩm</label>
-    <input type="file" class="form-control" id="image" name="image" aria-describedby="imageHelp">
-    <small id="imageHelp" class="form-text text-muted">Chọn ảnh đại diện loại sản phẩm (tối đa là 5MB).</small>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="order_date">Ngày đặt hàng</label>
+        <input type="text" class="form-control" id="order_date" name="order_date" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="ship_name">Tên người nhận hàng</label>
+        <input type="text" class="form-control" id="ship_name" name="ship_name" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="ship_address1">Địa chỉ người nhận hàng 1</label>
+        <input type="text" class="form-control" id="ship_address1" name="ship_address1" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="ship_address2">Địa chỉ người nhận hàng 1</label>
+        <input type="text" class="form-control" id="ship_address2" name="ship_address2" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="ship_city">Thành phố</label>
+        <input type="text" class="form-control" id="ship_city" name="ship_city" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="ship_country">Quốc gia</label>
+        <input type="text" class="form-control" id="ship_country" name="ship_country" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="shipping_pee">Phí giao hàng</label>
+        <input type="text" class="form-control" id="shipping_pee" name="shipping_pee" aria-describedby="order_dateHelp" placeholder="">
+      </div>
+    </div>
   </div>
 
   <div class="card border-success text-white bg-gradient-primary mb-3">
