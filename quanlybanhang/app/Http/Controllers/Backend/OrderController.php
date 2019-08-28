@@ -19,18 +19,18 @@ class OrderController extends Controller
     {
         // HERE DOC string PHP
         $sql = <<<EOT
-    SELECT o.id, CONCAT('ORDER_', o.id) AS OrderCode, o.order_date, o.shipped_date,
+    SELECT o.id, CONCAT('ORDER_', o.id) AS OrderCode, o.order_date, o.shipped_date, o.order_status,
         c.last_name, c.first_name, c.email, c.company, c.phone, c.address1,
         COUNT(*) TongSoMatHang
         , SUM((od.quantity * od.unit_price) * (1 - od.discount)) AS TongThanhTien
     FROM orders o
     JOIN customers c ON o.customer_id = c.id
     JOIN order_details od ON od.order_id = o.id
-    GROUP BY o.id, o.order_date, o.shipped_date,	c.last_name, c.first_name, c.email, c.company, c.phone, c.address1
+    GROUP BY o.id, o.order_date, o.shipped_date,	c.last_name, c.first_name, c.email, c.company, c.phone, c.address1, o.order_status
 EOT;
         // Raw SQL
         $lstOrders = DB::select($sql);
-        dd($lstOrders);
+        // dd($lstOrders);
         return view('backend.orders.index')
             ->with('lstOrders', $lstOrders);
     }
