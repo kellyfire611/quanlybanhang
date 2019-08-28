@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Order;
+use DB;
 
 class OrderController extends Controller
 {
@@ -16,7 +17,20 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $lstOrders = Order::all();
+        // HERE DOC string PHP
+        $sql = <<<EOT
+    SELECT o.id, CONCAT('ORDER_', o.id) AS OrderCode, o.order_date, o.shipped_date,
+        c.last_name, c.first_name, c.email, c.company, c.phone, c.address1,
+        COUNT(*) TongSoMatHang
+        , SUM((od.quantity * od.unit_price) * (1 - od.discount)) AS TongThanhTien
+    FROM orders o
+    JOIN customers c ON o.customer_id = c.id
+    JOIN order_details od ON od.order_id = o.id
+    GROUP BY o.id, o.order_date, o.shipped_date,	c.last_name, c.first_name, c.email, c.company, c.phone, c.address1
+EOT;
+        // Raw SQL
+        $lstOrders = DB::select($sql);
+        dd($lstOrders);
         return view('backend.orders.index')
             ->with('lstOrders', $lstOrders);
     }
@@ -28,9 +42,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $lstProducts = Product::all();
-        return view('backend.orders.create')
-            ->with('lstProducts', $lstProducts);
+        
+        // return view('backend.orders.create')
+        //     ->with('lstProducts', $lstProducts);
     }
 
     /**
