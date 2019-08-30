@@ -14,8 +14,8 @@ class Order extends Model
     protected $guarded      = ['id'];
     protected $primaryKey   = 'id';
 
-    protected $dates        = ['order_date', 'shipped_date', 'paid_date'];
-    protected $dateFormat   = 'Y-m-d H:i:s';
+    // protected $dates        = ['order_date', 'shipped_date', 'paid_date'];
+    // protected $dateFormat   = 'Y-m-d H:i:s';
 
     public function details() {
         return $this->hasMany('App\OrderDetail', 'order_id', 'id');

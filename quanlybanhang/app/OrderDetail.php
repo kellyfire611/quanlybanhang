@@ -14,8 +14,8 @@ class OrderDetail extends Model
     protected $guarded      = ['order_id', 'product_id'];
     protected $primaryKey   = ['order_id', 'product_id'];
 
-    protected $dates        = ['order_date', 'shipped_date', 'paid_date'];
-    protected $dateFormat   = 'Y-m-d H:i:s';
+    // protected $dates        = ['date_allocated'];
+    // protected $dateFormat   = 'Y-m-d H:i:s';
 
     public function order() {
         return $this->belongsTo('App\Order', 'order_id', 'id');

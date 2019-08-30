@@ -8,7 +8,9 @@ use App\Product;
 use App\Customer;
 use App\Employee;
 use App\Order;
+use App\OrderDetail;
 use DB;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -19,6 +21,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+        // dd('hello');
         // HERE DOC string PHP
         $sql = <<<EOT
     SELECT o.id, CONCAT('ORDER_', o.id) AS OrderCode, o.order_date, o.shipped_date, o.order_status,
@@ -62,7 +65,52 @@ EOT;
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
+
+        // New Order
+        $order = new Order();
+        $order->employee_id         = $request->employee_id;
+        $order->customer_id         = $request->customer_id;
+        $order->order_date          = $request->order_date;
+        $order->shipped_date        = '2019-02-02 18:16:00';
+        $order->ship_name           = $request->ship_name;
+        $order->ship_address1       = $request->ship_address1;
+        $order->ship_address2       = $request->ship_address2;
+        $order->ship_city           = $request->ship_city;
+        $order->ship_state          = $request->ship_state;
+        $order->ship_postal_code    = $request->ship_postal_code;
+        $order->ship_country        = $request->ship_country;
+        $order->shipping_pee        = $request->shipping_pee;
+        $order->payment_type        = "Tiền mặt";
+        $order->paid_date           = Carbon::now();
+        $order->order_status        = "1"; //1: mới đặt hàng; 2: đã thanh toán xong
+        $order->save(); // Có 1 dòng order mới trong db; $order->id lấy dc ID mới sinh của MYSQL
+
+        foreach($request->product_id as $index => $value) {
+            // Save bằng RAW SQL
+            $order_id = $order->id;
+            $product_id = $request->product_id[$index]; //1 | 3
+            $quantity = $request->quantity[$index]; // 2 | 20
+            $unit_price = $request->unit_price[$index];
+            $discount = $request->discount[$index];
+            $order_detail_status = '1'; //1: sản phẩm này mới đặt hàng; 2: sản phẩm này đã được giao
+            // dd($order_id, $product_id, $quantity, $unit_price, $discount);
+
+            $sqlInsert = "INSERT INTO order_details (order_id, product_id, quantity, unit_price, discount, order_detail_status, date_allocated) VALUES ($order_id, $product_id, $quantity, $unit_price, $discount, '$order_detail_status', '2019-08-30')";
+            DB::select($sqlInsert);
+
+            // Save bằng Model
+            // $orderDetail = new OrderDetail();
+            // $orderDetail->order_id = $order->id;
+            // $orderDetail->product_id = $request->product_id[$index]; //1 | 3
+            // $orderDetail->quantity = $request->quantity[$index]; // 2 | 20
+            // $orderDetail->unit_price = $order->unit_price[$index];
+            // $orderDetail->discount = $order->discount[$index];
+            // $orderDetail->order_detail_status = '1'; //1: sản phẩm này mới đặt hàng; 2: sản phẩm này đã được giao
+            // $orderDetail->save();
+        }
+
+        //return redirect()->route('backend.orders.index');
     }
 
     /**
