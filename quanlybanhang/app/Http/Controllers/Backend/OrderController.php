@@ -87,7 +87,6 @@ EOT;
         $order->save(); // Có 1 dòng order mới trong db; $order->id lấy dc ID mới sinh của MYSQL
 
         foreach($request->product_id as $index => $value) {
-            // Save bằng RAW SQL
             $order_id = $order->id;
             $product_id = $request->product_id[$index]; //1 | 3
             $quantity = $request->quantity[$index]; // 2 | 20
@@ -95,22 +94,23 @@ EOT;
             $discount = $request->discount[$index];
             $order_detail_status = '1'; //1: sản phẩm này mới đặt hàng; 2: sản phẩm này đã được giao
             // dd($order_id, $product_id, $quantity, $unit_price, $discount);
-
-            $sqlInsert = "INSERT INTO order_details (order_id, product_id, quantity, unit_price, discount, order_detail_status, date_allocated) VALUES ($order_id, $product_id, $quantity, $unit_price, $discount, '$order_detail_status', '2019-08-30')";
-            DB::select($sqlInsert);
+            
+            // Save bằng RAW SQL
+            // $sqlInsert = "INSERT INTO order_details (order_id, product_id, quantity, unit_price, discount, order_detail_status, date_allocated) VALUES ($order_id, $product_id, $quantity, $unit_price, $discount, '$order_detail_status', '2019-08-30')";
+            // DB::select($sqlInsert);
 
             // Save bằng Model
-            // $orderDetail = new OrderDetail();
-            // $orderDetail->order_id = $order->id;
-            // $orderDetail->product_id = $request->product_id[$index]; //1 | 3
-            // $orderDetail->quantity = $request->quantity[$index]; // 2 | 20
-            // $orderDetail->unit_price = $order->unit_price[$index];
-            // $orderDetail->discount = $order->discount[$index];
-            // $orderDetail->order_detail_status = '1'; //1: sản phẩm này mới đặt hàng; 2: sản phẩm này đã được giao
-            // $orderDetail->save();
+            $orderDetail = new OrderDetail();
+            $orderDetail->order_id = $order_id;
+            $orderDetail->product_id = $product_id;
+            $orderDetail->quantity = $quantity;
+            $orderDetail->unit_price = $unit_price;
+            $orderDetail->discount = $discount;
+            $orderDetail->order_detail_status = $order_detail_status;
+            $orderDetail->save();
         }
 
-        //return redirect()->route('backend.orders.index');
+        return redirect()->route('backend.orders.index');
     }
 
     /**
